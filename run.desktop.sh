@@ -89,7 +89,7 @@ gnome_set(){
   gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
   gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
 
-  gsettings set org.gnome.desktop.interface icon-theme 'Win11-blue'
+  gsettings set org.gnome.desktop.interface icon-theme 'We10X'
 
   timeout 1 tilix &> /dev/null
   dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/background-color "'#000000000000'"
@@ -114,40 +114,40 @@ gnome_set(){
 my_theme(){
   mkdir -p ~/.config/
   # configuring mimeapps
-  if [ -f "$RUNDIR/desktop.files/mimeapps.list" ] ; then
-      cd $RUNDIR/desktop.files/
-      cat "$RUNDIR/desktop.files/mimeapps.list" > ~/.config/mimeapps.list
-  fi
+    if [ -f "$RUNDIR/desktop.files/mimeapps.list" ] ; then
+        cd $RUNDIR/desktop.files/
+        cat "$RUNDIR/desktop.files/mimeapps.list" > ~/.config/mimeapps.list
+    fi
   # copying favorite wallpapers
-  if [ -f $RUNDIR/desktop.files/wallpapers.tar.xz ] ; then 
-      cd $RUNDIR/desktop.files/
-      tar -xf wallpapers.tar.xz
-      cp -ru wallpapers/* ~/Pictures/my.wallpapers/
-      rm -rf wallpapers/
-  fi
+    if [ -f $RUNDIR/desktop.files/wallpapers.tar.xz ] ; then 
+        cd $RUNDIR/desktop.files/
+        tar -xf wallpapers.tar.xz
+        cp  -ru wallpapers/* ~/Pictures/my.wallpapers/
+        rm  -rf wallpapers/
+    fi
   # setting random wallpaper script
-  if [ -f "$RUNDIR/desktop.files/set.bg.pic.sh" ] ; then
-      cd $RUNDIR/desktop.files/
-      mkdir -p ~/.scripts/ ~/Pictures/my.wallpapers
-      cat "$RUNDIR/desktop.files/set.bg.pic.sh" > ~/.scripts/set.bg.pic.sh
-      chmod +x ~/.scripts/set.bg.pic.sh
-  fi
+    if [ -f "$RUNDIR/desktop.files/set.bg.pic.sh" ] ; then
+        cd $RUNDIR/desktop.files/
+        mkdir -p ~/.scripts/ ~/Pictures/my.wallpapers
+        cat "$RUNDIR/desktop.files/set.bg.pic.sh" > ~/.scripts/set.bg.pic.sh
+        chmod +x ~/.scripts/set.bg.pic.sh
+    fi
   # copying favorite fonts
-  if [ -f $RUNDIR/fonts.tar.xz ] ; then 
-      mkdir -p ~/.fonts
-      cd $RUNDIR/desktop.files/
-      tar -xf fonts.tar.xz
-      cp -ru fonts/* ~/.fonts/
-      rm -rf fonts/
-  fi
+    if [ -f $RUNDIR/fonts.tar.xz ] ; then 
+        mkdir -p ~/.fonts
+        cd $RUNDIR/desktop.files/
+        tar -xf fonts.tar.xz
+        cp -ru fonts/* ~/.fonts/
+        rm -rf fonts/
+    fi
   # copying favorite icons
-  if [ -f $RUNDIR/icons.tar.xz ] ; then 
-      mkdir -p ~/.icons
-      cd $RUNDIR/desktop.files/
-      tar -xf icons.tar.xz 
-      cp -ru icons/* ~/.icons/
-      rm -rf icons/
-  fi
+    if [ -f $RUNDIR/icons.tar.xz ] ; then 
+        mkdir -p ~/.icons
+        cd $RUNDIR/desktop.files/
+        tar -xf icons.tar.xz 
+        cp -ru icons/* ~/.icons/
+        rm -rf icons/
+    fi
   cd $RUNDIR
  }
 my_gnome_ext(){
